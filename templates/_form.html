@@ -2,11 +2,11 @@
 {% for field in form if field.widget.input_type!='hidden' %}
 	<div class="form-group row">
         {{field.label}}
-            {% for err in field.errors %}
-                <small class = "badge badge-danger">
+        {{field(class_='form-control')}}
+        {% for err in field.errors %}
+                <small class = "badge badge-danger mt-1">
                     {{err}}
                 </small>
             {% endfor %}
-        {{field(class_='form-control')}}
     </div>
 {% endfor %}
