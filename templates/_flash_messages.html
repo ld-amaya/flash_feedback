@@ -1,0 +1,9 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <div class="d-flex justify-content-center my-2">
+                <span class='badge badge-danger'>{{msg}}</span>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
