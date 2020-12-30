@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} User Registration {% endblock %}
+
+{% block content %} 
+    <div class="row justify-content-end mt-5">
+        <div class="col-sm-4 mt-5 user_form">
+            <h1 class="text-center mb-3">User Registration</h1>
+            <form action="/register" method = "POST">
+                {% include '_form.html' %}
+                <div class = "text-right">
+                    <button type='submit' class ='btn btn-primary btn-sm'>Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
