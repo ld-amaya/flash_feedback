@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %} Show Content {% endblock %}
+
+{% block content %} 
+    <div class="row">
+        <div class="col-lg-4 mt-5">
+            <h2>User Credentials</h2>
+            <table class="table table-striped mt-2">
+                <thead class="thead">
+                    <tr>
+                        <th>
+                            Credentials
+                        </th>
+                        <th>
+                            Details
+                        </th>
+                    </tr>
+                </thead>
+                    <tr>
+                        <td>Username</td>
+                        <td>{{user.username}}</td>
+                    </tr>
+                    <tr>
+                        <td>First Name</td>
+                        <td>{{user.first_name.title()}}</td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td>{{user.last_name.title()}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
+                    </tr>
+            </table>
+        </div>
+        <div class="col-lg-8 mt-5">
+            <div class="form-inline justify-content-between">
+                <h2 class="text-left">User Feedback</h2>
+                <div>
+                    <a href="/users/{{user.username}}/feedback/add" class ="btn btn-primary btn-sm">Add Feedback</a>    
+                </div>
+            </div>
+            <div>
+                {% include '/feedback/_flash_feedback.html'%}
+            </div>
+            <table class="table table-striped mt-2">
+                <thead class="thead">
+                    <tr>
+                        <th scope="col">
+                            Title
+                        </th>
+                        <th scope="col">
+                            Details
+                        </th>
+                        <th scope="col">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                {% for feedback in user.feedback %}
+                    <tr>
+                        <td>{{feedback.title}}</td>
+                        <td>{{feedback.content}}</td>
+                        <td class ="form-inline">
+                            <a href="/feedback/{{feedback.id}}/update" class ="btn btn-success btn-sm mr-1 update">Edit</a>
+                            <form action="/feedback/{{feedback.id}}/delete" method = "POST">
+                                <button type="submit" class ="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                            <!-- <a href="/feedback/{{feedback.id}}/delete" class ="btn btn-danger btn-sm update">Delete</a> -->
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
