@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %} Add Feedback {% endblock %}
+
+{% block content %}  
+    <h1>Add Feedback</h1>
+    <form action="/feedback/{{feedback.id}}/update" method="POST">
+        {% include '_form.html' %}
+        <a href="/users/{{feedback.user.username}}" class ="btn btn-success btn-sm"> Cancel </a>
+        <button type="submit" class="btn btn-danger btn-sm"> Update </button>
+    </form>
+{% endblock %}
