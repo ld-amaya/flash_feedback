@@ -1,0 +1,10 @@
+#landscape{
+    width:100%;
+    padding: 20px;
+}
+
+.user_form{
+    border:1px solid rgb(214, 214, 214);
+    border-radius: 10px;
+    padding:30px;
+}
